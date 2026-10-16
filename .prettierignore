@@ -1,0 +1,7 @@
+node_modules
+dist
+.next
+coverage
+CLAUDE.md
+README.md
+package-lock.json
