@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum CourseType {
+  OBRIGATORIA
+  ELETIVA
+}
+
+enum UserCourseStatus {
+  CURSADA
+  CURSANDO
+}
+
+model Major {
+  id   Int    @id @default(autoincrement())
+  code String @unique
+  name String
+
+  users        User[]
+  majorCourses MajorCourse[]
+
+  @@map("majors")
+}
+
+model User {
+  id      Int    @id @default(autoincrement())
+  email   String @unique
+  name    String
+  majorId Int    @map("major_id")
+
+  major       Major        @relation(fields: [majorId], references: [id])
+  userCourses UserCourse[]
+
+  @@map("users")
+}
+
+// Universal course data only. Per-major data lives in MajorCourse.
+model Course {
+  id            Int     @id @default(autoincrement())
+  code          String  @unique
+  name          String
+  workloadHours Int     @map("workload_hours")
+  credits       Int
+  syllabus      String?
+
+  majorCourses  MajorCourse[]
+  userCourses   UserCourse[]
+  // Edges where this course is the dependent one.
+  prerequisites CoursePrerequisite[] @relation("CourseToPrerequisite")
+  // Edges where this course is required by another one.
+  requiredBy    CoursePrerequisite[] @relation("RequiredCourse")
+
+  @@map("courses")
+}
+
+model MajorCourse {
+  majorId         Int        @map("major_id")
+  courseId        Int        @map("course_id")
+  type            CourseType
+  recommendedTerm Int?       @map("recommended_term")
+
+  major  Major  @relation(fields: [majorId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@id([majorId, courseId])
+  @@map("major_courses")
+}
+
+// Graph edge: courseId requires requiredCourseId (AND semantics, see ADR 0001).
+// The CHECK (course_id <> required_course_id) is added by hand in the migration SQL,
+// since Prisma cannot express CHECK constraints.
+model CoursePrerequisite {
+  courseId         Int @map("course_id")
+  requiredCourseId Int @map("required_course_id")
+
+  course         Course @relation("CourseToPrerequisite", fields: [courseId], references: [id], onDelete: Cascade)
+  requiredCourse Course @relation("RequiredCourse", fields: [requiredCourseId], references: [id], onDelete: Cascade)
+
+  @@id([courseId, requiredCourseId])
+  @@index([requiredCourseId])
+  @@map("course_prerequisites")
+}
+
+model UserCourse {
+  userId    Int              @map("user_id")
+  courseId  Int              @map("course_id")
+  status    UserCourseStatus
+  termLabel String           @map("term_label")
+  grade     Decimal?         @db.Decimal(4, 2)
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@id([userId, courseId])
+  @@map("user_courses")
+}
