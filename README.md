@@ -1,2 +1,1 @@
-# cin-planner
-Academic planner for CIn-UFPE students: visualize course prerequisites as an interactive graph and plan your terms with automatic validation
+A web app that helps Computer Science students at CIn-UFPE plan their semesters. Mark the courses you’ve completed, explore the prerequisite graph, and build valid term plans, with each blocked course explained by the missing prerequisites
