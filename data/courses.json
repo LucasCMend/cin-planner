@@ -1,0 +1,178 @@
+[
+  {
+    "code": "CIN0130",
+    "name": "Sistemas Digitais",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Operações Lógicas. Álgebra booleana. Circuitos combinacionais. Circuitos Sequenciais. Conceitos Básicos de Arquitetura de Computadores (CPU simples). Implementação Monociclo.",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0131",
+    "name": "Concepção de Artefatos Digitais",
+    "workloadHours": 60,
+    "credits": 3,
+    "syllabus": "Exploração. Técnicas para concepção de artefatos digitais com base no entendimento e escolha de um problema. Foco em análise de contexto com técnicas de pesquisa qualitativa; Síntese de dados de contexto e usuários; Técnicas de geração e seleção de ideias; Concepção e teste da solução; Técnicas de prototipagem de sistemas sociotécnicos e desenvolvimento de habilidades transversais (trabalho em equipe, comunicação, criatividade e habilidades de apresentação).",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0132",
+    "name": "Matemática Discreta",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Provas e Proposições; Teoria de Conjuntos; Indução Matemática e Definições Recursivas; Princípios de Contagem; Introdução a teoria dos números; Relações e Ordens Parciais; Introdução a teoria dos Grafos.",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0133",
+    "name": "Introdução à Programação",
+    "workloadHours": 120,
+    "credits": 5,
+    "syllabus": "Resolução de problemas que envolvam raciocínio algorítmico, sem escrita de programas. Conceito de algoritmos. Conceitos básicos de programação. Tipos primitivos, valores e operadores. Expressões. Variáveis. Atribuição. Entrada e saída padrão. Estruturas de controle condicionais e de iteração. Tipos estruturados. Decomposição de programas. Funções e mecanismos de passagem de parâmetros. Escopo. Recursão. Computação responsável. Competências projetuais.",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0134",
+    "name": "Arquitetura de Computadores e Sistemas Operacionais",
+    "workloadHours": 60,
+    "credits": 3,
+    "syllabus": "Arquitetura de um Processador. Pipeline. Exceções. Hierarquia de Memória. Multiprocessadores Memória Compartilhada. Introdução aos Sistemas Operacionais: Gerenciamento de Processos, Gerenciamento de Memória, Sistemas de arquivos.",
+    "prerequisites": ["CIN0130"]
+  },
+  {
+    "code": "MA026",
+    "name": "Cálculo Diferencial e Integral 1",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Derivada de funções de uma variável; Propriedades básicas das funções de uma variável; Integrais de funções de uma variável.",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0135",
+    "name": "Estruturas de Dados Orientadas a Objetos",
+    "workloadHours": 60,
+    "credits": 3,
+    "syllabus": "Conceitos de tipos abstratos de dados e programação orientada a objetos; modelagem, implementação, depuração e testes de tipos abstratos de dados para coleções dinâmicas lineares, conjuntos, dicionários e estruturas hierárquicas (árvores).",
+    "prerequisites": ["CIN0133"]
+  },
+  {
+    "code": "CIN0136",
+    "name": "Desenvolvimento de Software",
+    "workloadHours": 120,
+    "credits": 6,
+    "syllabus": "Abordagem de habilidades técnicas e habilidades transversais para o desenvolvimento de software, apoiada por metodologias ágeis, conceitos básicos de programação e estruturas de dados. Habilidades técnicas: Gestão de Projetos, Metodologias ágeis de desenvolvimento, Requisitos, Gerência de configuração e mudanças, Arquitetura e projeto de software, Testes de software, Code Reviews e Refactoring. Habilidades transversais: mentalidade de resolução de problemas, entendimento da relação do profissional com a sociedade e a cultura digital, ética, propriedade intelectual.",
+    "prerequisites": ["CIN0133"]
+  },
+  {
+    "code": "CIN0137",
+    "name": "Banco de Dados",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Introdução; Modelagem de dados; Sistemas de BD Relacionais; Sistemas de Banco de Dados Não Relacionais e Integração de Dados.",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0138",
+    "name": "Álgebra Vetorial e Linear para Computação",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Geometria Analítica, Sistemas Lineares, Espaços Vetoriais, Transformações Lineares e Diagonalização de matrizes e operadores.",
+    "prerequisites": []
+  },
+  {
+    "code": "CIN0139",
+    "name": "Integração e Evolução de Sistemas de Informação",
+    "workloadHours": 120,
+    "credits": 6,
+    "syllabus": "Contextualização de processos nas organizações. Áreas funcionais e processos organizacionais. Fundamentos de sistemas de informação. Modelagem de processos de negócio. Melhoria contínua dos processos de negócio. Arquitetura organizacional. Arquitetura de sistemas de informação. Ciclo de vida de sistemas de informação. Integração e evolução de módulos/subsistemas/sistemas de informação. Planejamento e gerenciamento em projetos de sistemas de informação. Estudos de casos. Ferramentas.",
+    "prerequisites": ["CIN0136"]
+  },
+  {
+    "code": "CIN0140",
+    "name": "Algoritmos",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Programação imperativa estruturada. Gestão de memória. Entrada e saída. Análise de algoritmos. Algoritmos de ordenação. Algoritmos de busca em estruturas lineares. Árvores e algoritmos. Filas de prioridade e algoritmos. Estruturas para relações de equivalência e algoritmos. Grafos e algoritmos. Heurísticas para problemas intratáveis.",
+    "prerequisites": ["CIN0135"]
+  },
+  {
+    "code": "CIN0141",
+    "name": "Lógica para Computação",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Origens da Lógica: Aristóteles. Boole e Frege. Lógica proposicional: Sintaxe e Semântica. Provas por indução sobre conjuntos indutivos. Satisfatibilidade. Métodos de prova para lógica proposicional. Lógica de Primeira Ordem: Estruturas. Lógica de Primeira Ordem: Sintaxe e Semântica. Método de Herbrand: Unificação. Resolução para Lógica de Primeira Ordem. Sistemas Axiomáticos.",
+    "prerequisites": ["CIN0132"]
+  },
+  {
+    "code": "CIN0142",
+    "name": "Estatística e Probabilidade para Computação",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Conceitos básicos de Probabilidade; Variáveis Aleatórias Discretas e Contínuas; Análise Exploratória de Dados; Introdução à R. Intervalos de Confiança; Testes de Hipóteses.",
+    "prerequisites": ["MA026"]
+  },
+  {
+    "code": "CIN0143",
+    "name": "Introdução a Sistemas Distribuídos e Redes de Computadores",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Introdução; Aplicações Distribuídas; Modelos de Comunicação; Modelos de Programação; Desempenho, confiabilidade e transparência; Nomeação; Coordenação; Consistência e Replicação; Tolerância a Falhas; Segurança.",
+    "prerequisites": ["CIN0134"]
+  },
+  {
+    "code": "CIN0144",
+    "name": "Aprendizado de Máquina e Ciência de Dados",
+    "workloadHours": 120,
+    "credits": 7,
+    "syllabus": "Introdução a Inteligência Artificial. Aprendizado de Máquina. Introdução à Ciência de Dados.",
+    "prerequisites": ["CIN0133", "CIN0138"]
+  },
+  {
+    "code": "CIN0145",
+    "name": "Programação Concorrente",
+    "workloadHours": 30,
+    "credits": 2,
+    "syllabus": "Conceitos fundamentais de concorrência; conceitos básicos de programação concorrente; Problemas e desafios da programação concorrente. Suporte de linguagens de programação à concorrência.",
+    "prerequisites": ["CIN0134"]
+  },
+  {
+    "code": "CIN0146",
+    "name": "Programação Funcional",
+    "workloadHours": 30,
+    "credits": 2,
+    "syllabus": "Expressões, valores. Funções: definição, expressões condicionais. Tipos: primitivos, tuplas, listas. Casamento de padrões. Estruturas de dados recursivas. Polimorfismo. Funções de alta ordem. Classes de tipos. Tipos Algébricos. Avaliação preguiçosa e recursão de cauda.",
+    "prerequisites": ["CIN0133"]
+  },
+  {
+    "code": "CIN0147",
+    "name": "Metodologia Científica",
+    "workloadHours": 60,
+    "credits": 3,
+    "syllabus": "O conhecimento e a importância do trabalho acadêmico. A ciência e o método científico. Pesquisa em Computação. Escrita e apresentação científicas.",
+    "prerequisites": ["CIN0142"]
+  },
+  {
+    "code": "CIN0148",
+    "name": "Teoria da Computação",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Limites da computabilidade e da decidibilidade. Significado matemático de \"algoritmo\". Complexidade computacional inerente a problemas algorítmicos. Classes de complexidade. Dicotomia \"problema solúvel em tempo viável\" versus \"problema com soluções verificáveis em tempo viável\". Problemas factíveis versus problemas infactíveis.",
+    "prerequisites": ["CIN0141"]
+  },
+  {
+    "code": "CIN0149",
+    "name": "Informática e Sociedade",
+    "workloadHours": 30,
+    "credits": 2,
+    "syllabus": "Aspectos legais e éticos no uso de TI. Impacto social de novas tecnologias. Conceitos gerais básicos de ética e direito. Cibercrimes. Propriedade intelectual e pirataria. Privacidade. Ciclos de inovação tecnológica.",
+    "prerequisites": ["CIN0131"]
+  },
+  {
+    "code": "CIN0150",
+    "name": "Compiladores",
+    "workloadHours": 60,
+    "credits": 4,
+    "syllabus": "Esta disciplina explora os princípios, algoritmos, e estruturas de dados envolvidos na teoria e implementação de compiladores para linguagens de programação. Os alunos aprenderão como traduzir sistematicamente linguagens de programação de alto nível em código de máquina executável. Durante o curso, discutimos questões associadas ao projeto e implementação de compiladores escrevendo um compilador para uma linguagem de pequeno porte. O curso apresenta uma série de conceitos importantes, como análise sintática e análise de programa, que são úteis em muitos outros contextos além dos compiladores, como engenharia de software e segurança.",
+    "prerequisites": ["CIN0148", "CIN0140"]
+  }
+]
