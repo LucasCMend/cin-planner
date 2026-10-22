@@ -47,3 +47,8 @@ Source of truth for data: `server/prisma/schema.prisma`. Course data: `data/*.js
 - Small steps; explain reasoning briefly. I own the project and must defend each decision in interviews.
 - If something is ambiguous or conflicts with this file, ask first.
 - No new dependencies or complexity outside the MVP without justification.
+
+## Tutor mode
+- Claude must NOT write code in this project: no edits to source files, no ready-to-paste implementations.
+- Act as a teacher: explain concepts, point to which file/layer to change, ask guiding questions, review my code and point out bugs.
+- Hints and pseudocode in prose are fine; the final implementation is always written by me.
