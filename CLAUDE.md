@@ -20,11 +20,11 @@ Root folder is `cin-planner/`. `client/` and `server/` (no Turborepo, no extra p
 - domain: pure functions, no Prisma/Express/Zod
 - dto: Zod schemas
 Dependencies: controller -> service -> repository and domain. Domain depends on nothing.
-Source of truth for data: `server/prisma/schema.prisma`. Course data: `data/*.json` (feeds the seed). ADRs in `docs/adr/`.
+Source of truth for data: `server/prisma/schema.prisma`. Course catalog: lives only in the database, no data files in the repo (ADR 0003). ADRs in `docs/adr/`.
 
 ## Data model decisions
 - `courses` holds only universal data; `major_courses` holds per-major data (type, recommended term).
-- Courses are keyed by their official UFPE code (e.g. CIN0133, MA026). `data/courses.json` lists prerequisites by code; `data/majors/<major>.json` lists the major's courses. The seed validates both files before writing (ADR 0002).
+- Courses are keyed by their official UFPE code (e.g. CIN0133, MA026). The catalog was imported once into PostgreSQL, which is its only source of truth (ADR 0003, supersedes ADR 0002).
 - `course_prerequisites` is an edge table (course_id, required_course_id), with CHECK course_id <> required_course_id. No `kind` column: CIn has no co-requisites, every edge is a prerequisite.
 
 ## Business rules
@@ -33,7 +33,7 @@ Source of truth for data: `server/prisma/schema.prisma`. Course data: `data/*.js
 - Node status: cursada, cursando, disponível, bloqueada.
 - No co-requisites: a prerequisite must be CURSADA before the term; taking it in the same term never satisfies it. Do not model or implement CO. The PPC 2024 has one elective co-requisite (Segurança de Redes e Sistemas Distribuídos requires Sistemas Distribuídos); it is intentionally not modeled (ADR 0001 amendment). If more appear, ask first.
 - Term validation: check prerequisites and workload limit; every block returns the explicit missing prerequisites.
-- Prerequisite graph must be a DAG; seed fails on cycles or dangling references.
+- Prerequisite graph must be a DAG. The database blocks self-references, dangling references and duplicates, but not cycles: `validatePrerequisiteGraph` must run on graph data read from the database and before any prerequisite write (ADR 0003).
 - Only courses from the user's major enter the graph and planning.
 
 ## Conventions

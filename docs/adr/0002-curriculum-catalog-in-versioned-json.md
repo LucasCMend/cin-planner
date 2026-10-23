@@ -1,6 +1,6 @@
 # ADR 0002: The curriculum catalog lives in versioned JSON and is loaded by a seed
 
-- Status: Accepted
+- Status: Superseded by [ADR 0003](0003-curriculum-catalog-only-in-database.md)
 - Date: 2026-10-16
 
 ## Context
