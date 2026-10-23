@@ -29,3 +29,11 @@ Checked against real CIn-UFPE curriculum data:
 - Positive: no extra column or enum to maintain in the schema, seed and DTOs.
 - Negative: if the curriculum ever adds OR prerequisites or co-requisites, the model must change (a `kind` column or a group/alternative table) and the domain functions with it. A migration plus new tests would be needed.
 - Mitigation: if real data contradicts these rules, we stop and revisit this ADR instead of working around the model.
+
+## Amendment (2026-10-16): one co-requisite in the 2024 PPC
+
+The official CC curriculum (PPC 2024) has exactly one co-requisite: the elective _Segurança de Redes e Sistemas Distribuídos_ lists _Redes de Computadores_ as prerequisite and _Sistemas Distribuídos_ as co-requisite. All other components have none.
+
+Decision: keep the model without co-requisites. That course is loaded with its prerequisite only; the co-requisite is not represented.
+
+Consequences: the planner neither checks nor suggests taking _Sistemas Distribuídos_ in the same term. One elective does not justify a `kind` column, a migration and a CO rule in `validateTerm`. If more co-requisites show up, revisit this ADR.

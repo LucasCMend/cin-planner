@@ -24,13 +24,14 @@ Source of truth for data: `server/prisma/schema.prisma`. Course data: `data/*.js
 
 ## Data model decisions
 - `courses` holds only universal data; `major_courses` holds per-major data (type, recommended term).
+- Courses are keyed by their official UFPE code (e.g. CIN0133, MA026). `data/courses.json` lists prerequisites by code; `data/majors/<major>.json` lists the major's courses. The seed validates both files before writing (ADR 0002).
 - `course_prerequisites` is an edge table (course_id, required_course_id), with CHECK course_id <> required_course_id. No `kind` column: CIn has no co-requisites, every edge is a prerequisite.
 
 ## Business rules
 - Prerequisites are AND only (no OR), confirmed against real CIn data. A course may have several prerequisites and ALL are required (e.g. Machine Learning requires Linear Algebra AND Intro to Programming). If real data later contradicts this, ask before changing the model.
 - A course is available if not yet completed and all its prerequisites are CURSADA.
 - Node status: cursada, cursando, disponível, bloqueada.
-- No co-requisites (confirmed): a prerequisite must be CURSADA before the term; taking it in the same term never satisfies it. Do not model or implement CO. If real data contradicts this, ask first.
+- No co-requisites: a prerequisite must be CURSADA before the term; taking it in the same term never satisfies it. Do not model or implement CO. The PPC 2024 has one elective co-requisite (Segurança de Redes e Sistemas Distribuídos requires Sistemas Distribuídos); it is intentionally not modeled (ADR 0001 amendment). If more appear, ask first.
 - Term validation: check prerequisites and workload limit; every block returns the explicit missing prerequisites.
 - Prerequisite graph must be a DAG; seed fails on cycles or dangling references.
 - Only courses from the user's major enter the graph and planning.
@@ -46,3 +47,8 @@ Source of truth for data: `server/prisma/schema.prisma`. Course data: `data/*.js
 - Small steps; explain reasoning briefly. I own the project and must defend each decision in interviews.
 - If something is ambiguous or conflicts with this file, ask first.
 - No new dependencies or complexity outside the MVP without justification.
+
+## Tutor mode
+- Claude must NOT write code in this project: no edits to source files, no ready-to-paste implementations.
+- Act as a teacher: explain concepts, point to which file/layer to change, ask guiding questions, review my code and point out bugs.
+- Hints and pseudocode in prose are fine; the final implementation is always written by me.
