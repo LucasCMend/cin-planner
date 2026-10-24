@@ -3,6 +3,11 @@ import type { ErrorRequestHandler, RequestHandler } from 'express';
 import { ZodError } from 'zod';
 import { AppError, NotFoundError, ValidationError } from './errors/index.js';
 import courseRoutes from './routes/courseRoutes.js';
+import majorRoutes from './routes/majorRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import majorCourseRoutes from './routes/majorCourseRoutes.js';
+import coursePrerequisiteRoutes from './routes/coursePrerequisiteRoutes.js';
+import userCourseRoutes from './routes/userCourseRoutes.js';
 
 const notFoundHandler: RequestHandler = (req, _res, next) => {
   next(new NotFoundError('Rota', { method: req.method, path: req.originalUrl }));
@@ -32,6 +37,11 @@ app.get('/health', (_req, res) => {
 });
 
 app.use("/courses", courseRoutes)
+app.use('/majors', majorRoutes);
+app.use('/users', userRoutes);
+app.use('/major-courses', majorCourseRoutes);
+app.use('/course-prerequisites', coursePrerequisiteRoutes);
+app.use('/user-courses', userCourseRoutes);
 
 
 app.use(notFoundHandler);
