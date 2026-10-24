@@ -47,7 +47,7 @@ model Course {
   name          String
   workloadHours Int     @map("workload_hours")
   credits       Int
-  syllabus      String?
+  syllabus      String
 
   majorCourses  MajorCourse[]
   userCourses   UserCourse[]
