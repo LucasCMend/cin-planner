@@ -8,7 +8,7 @@ import userRoutes from './routes/userRoutes.js';
 import majorCourseRoutes from './routes/majorCourseRoutes.js';
 import coursePrerequisiteRoutes from './routes/coursePrerequisiteRoutes.js';
 import userCourseRoutes from './routes/userCourseRoutes.js';
-import termRoutes from './routes/termRoutes.js'
+import validationRoutes from './routes/validationRoutes.js'
 
 const notFoundHandler: RequestHandler = (req, _res, next) => {
   next(new NotFoundError('Rota', { method: req.method, path: req.originalUrl }));
@@ -43,7 +43,7 @@ app.use('/users', userRoutes);
 app.use('/major-courses', majorCourseRoutes);
 app.use('/course-prerequisites', coursePrerequisiteRoutes);
 app.use('/user-courses', userCourseRoutes);
-app.use('/terms', termRoutes)
+app.use('/validate', validationRoutes)
 
 
 app.use(notFoundHandler);
