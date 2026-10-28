@@ -1,6 +1,6 @@
 export type Status = 'cursada' | 'cursando' | 'disponível' | 'bloqueada';
 
-export type CourseStatusInput = {
+type CourseStatusInput = {
   code: string;
   preRequisites: readonly string[];
   completed: ReadonlySet<string>;

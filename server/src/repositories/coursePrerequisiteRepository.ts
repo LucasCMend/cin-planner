@@ -20,6 +20,14 @@ export class CoursePrerequisiteRepository {
     return await prisma.coursePrerequisite.findMany({ where: { courseId } });
   }
 
+  async getRequiredCodesByCourse(courseId: number): Promise<string[]> {
+    const edges = await prisma.coursePrerequisite.findMany({
+      where: { courseId },
+      select: { requiredCourse: { select: { code: true } } }
+    });
+    return edges.map((edge) => edge.requiredCourse.code);
+  }
+
   async delete(courseId: number, requiredCourseId: number) {
     return await prisma.coursePrerequisite.delete({
       where: { courseId_requiredCourseId: { courseId, requiredCourseId } }

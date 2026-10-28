@@ -26,34 +26,17 @@ export class ValidateTermService {
         throw new NotFoundError('Disciplina');
       }
 
-      const courseId = course.id;
-
-      const coursePreRequisites = await CoursePrerequisiteRepository.getByCourse(courseId);
-
-      const requisiteCodes: string[] = [];
-
-      for (const courseOfRequisites of coursePreRequisites) {
-        const requisite = await CourseRepository.get(courseOfRequisites.requiredCourseId);
-
-        if (!requisite) {
-          throw new NotFoundError('Pré-requisito');
-        }
-
-        requisiteCodes.push(requisite.code);
-      }
+      const requisiteCodes = await CoursePrerequisiteRepository.getRequiredCodesByCourse(course.id);
 
       preRequisites.set(course.code, requisiteCodes);
 
       termWorkload = termWorkload + course.workloadHours;
     }
 
-    const completedArray = (await UserCourseRepository.getByUser(userId)).filter(
-      (course) => course.status === 'CURSADA',
-    );
-
-    for (const course of completedArray) {
-      const courseMain = await CourseRepository.get(course.courseId);
-      completed.add(courseMain.code);
+    for (const userCourse of await UserCourseRepository.getCodesByUser(userId)) {
+      if (userCourse.status === 'CURSADA') {
+        completed.add(userCourse.code);
+      }
     }
 
     const input: TermInput = {

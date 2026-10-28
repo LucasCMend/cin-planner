@@ -22,6 +22,14 @@ export class UserCourseRepository {
     return await prisma.userCourse.findMany({ where: { userId } });
   }
 
+  async getCodesByUser(userId: number) {
+    const rows = await prisma.userCourse.findMany({
+      where: { userId },
+      select: { status: true, course: { select: { code: true } } }
+    });
+    return rows.map((row) => ({ code: row.course.code, status: row.status }));
+  }
+
   async delete(userId: number, courseId: number) {
     return await prisma.userCourse.delete({ where: { userId_courseId: { userId, courseId } } });
   }
